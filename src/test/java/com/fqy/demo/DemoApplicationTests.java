@@ -18,16 +18,18 @@ class DemoApplicationTests {
     @Autowired
     private UserMapper userMapper;
 
+    //查询所有记录
     @Test
     void findAll() {
         List<User> users = userMapper.selectList(null);
         System.out.println("users = " + users);
     }
 
+    //添加一条记录
     @Test
     void addUser() {
         User user = new User();
-        user.setName("ZhouJieLun");
+        user.setName("蔡依林");
         user.setAge(40);
         user.setEmail("ZhouJieLun@qq.com");
 
@@ -83,26 +85,27 @@ class DemoApplicationTests {
     //逻辑删除
     @Test
     void testDeleteById() {
-        int result = userMapper.deleteById(1423272096714940417L);
+        int result = userMapper.deleteById(1423847503319195650L);
         System.out.println("逻辑删除了几条记录:" + result);
 
     }
+
     //条件查询
     @Test
-    void testSelectQuery(){
+    void testSelectQuery() {
         QueryWrapper<User> wrapper = new QueryWrapper<>();
         //wrapper.ge("age",30);
         //wrapper.eq("name","WangYiBo");
-       // wrapper.ne("name","WangYiBo");
+        // wrapper.ne("name","WangYiBo");
         //wrapper.between("age",20,30);
-       // wrapper.like("name","Wang");
+        // wrapper.like("name","Wang");
         //wrapper.orderByDesc("age");
         //wrapper.last("limit 1");
-        wrapper.select("id","name");
+        wrapper.select("id", "name");
         List<User> users = userMapper.selectList(wrapper);
 
 
-        System.out.println("user="+users);
+        System.out.println("user=" + users);
     }
 
 }
